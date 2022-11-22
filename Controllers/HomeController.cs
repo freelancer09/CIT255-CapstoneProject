@@ -1,31 +1,55 @@
 ﻿using CapstoneProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.Extensions.FileSystemGlobbing;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace CapstoneProject.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+      
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Index(string search = null)
         {
-            return View();
+            if (search == null)
+            { 
+                return View(); 
+            }
+            else
+            {
+                RAWG rawg = new RAWG();
+                SearchResult query = new SearchResult();
+                query = rawg.GetSearchResult(search);
+                return View(query);
+            }            
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [Route("game/{slug}")]
+        public IActionResult GameDetail(string slug)
+        {
+            RAWG rawg = new RAWG();
+            GameResult query = new GameResult();
+            query = rawg.GetGameData(slug);
+            return View(query);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

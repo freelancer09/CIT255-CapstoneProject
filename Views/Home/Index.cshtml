@@ -1,8 +1,23 @@
-﻿@{
+﻿@model SearchResult
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form asp-controller="Home" asp-action="Index" method="get" class="form-inline">
+    <div class="form-group">
+        <label class="sr-only" for="search">Game</label>
+        <input class="form-control" id="search" name="search" placeholder="Video Game" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<hr />
+@if (Model != null)
+{
+    <ul>
+    @foreach (GameResult gameResult in Model.Results)
+    {
+        <li><a asp-area="" asp-controller="game" asp-action="@gameResult.Slug">@gameResult.Name</a></li>
+    }
+    </ul>
+}

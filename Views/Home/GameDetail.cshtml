@@ -1,0 +1,46 @@
+﻿@model GameResult
+@{
+    ViewData["Title"] = @Model.Name;
+}
+
+<div>
+    <h1>Name: @Model.Name</h1>
+    <div>Slug: @Model.Slug</div>
+    <div>ID: @Model.Id</div>
+    <div>Released: @Model.Released</div>
+    <div>Metacritic: @Model.Metacritic</div>
+    <div>ESRB Rating: @Model.esrb_rating.Name</div>
+    <div>Description: @Model.Description</div>
+    <div>Platforms:
+        <ul>
+        @foreach (PlatformWrapper platform in Model.Platforms)
+        {
+            <li>@platform.Platform.Name</li> 
+        }
+        </ul>
+    </div>
+    <div>Genres:
+        <ul>
+            @foreach (Genre genre in Model.Genres)
+            {
+                <li>@genre.Name</li> 
+            }
+        </ul>
+    </div>
+    <div>Developers:
+        <ul>
+            @foreach (Developer developer in Model.Developers)
+            {
+                <li>@developer.Name</li>
+            }
+        </ul>
+    </div>
+    <div>Publishers:
+        <ul>
+            @foreach (Publisher publisher in Model.Publishers)
+            {
+                <li>@publisher.Name</li>
+            }
+        </ul>
+    </div>
+</div>
