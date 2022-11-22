@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CapstoneProject.Migrations
 {
     [DbContext(typeof(GameContext))]
-    [Migration("20221122215012_Initial")]
+    [Migration("20221122225608_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,30 @@ namespace CapstoneProject.Migrations
                             GameID = 1,
                             GameListID = 1,
                             RawgID = 58175
+                        },
+                        new
+                        {
+                            GameID = 2,
+                            GameListID = 1,
+                            RawgID = 58175
+                        },
+                        new
+                        {
+                            GameID = 3,
+                            GameListID = 1,
+                            RawgID = 58175
+                        },
+                        new
+                        {
+                            GameID = 4,
+                            GameListID = 1,
+                            RawgID = 58175
+                        },
+                        new
+                        {
+                            GameID = 5,
+                            GameListID = 1,
+                            RawgID = 58175
                         });
                 });
 
@@ -74,6 +98,21 @@ namespace CapstoneProject.Migrations
                         {
                             ID = 2,
                             Name = "Wish List"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "List 1"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Name = "List 2"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Name = "List 3"
                         });
                 });
 

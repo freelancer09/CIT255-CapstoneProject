@@ -42,17 +42,26 @@ namespace CapstoneProject.Migrations
             migrationBuilder.InsertData(
                 table: "GameLists",
                 columns: new[] { "ID", "Name" },
-                values: new object[] { 1, "Collection" });
-
-            migrationBuilder.InsertData(
-                table: "GameLists",
-                columns: new[] { "ID", "Name" },
-                values: new object[] { 2, "Wish List" });
+                values: new object[,]
+                {
+                    { 1, "Collection" },
+                    { 2, "Wish List" },
+                    { 3, "List 1" },
+                    { 4, "List 2" },
+                    { 5, "List 3" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Games",
                 columns: new[] { "GameID", "GameListID", "RawgID" },
-                values: new object[] { 1, 1, 58175 });
+                values: new object[,]
+                {
+                    { 1, 1, 58175 },
+                    { 2, 1, 494384 },
+                    { 3, 1, 29179 },
+                    { 4, 1, 39707 },
+                    { 5, 1, 3265 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Games_GameListID",

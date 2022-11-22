@@ -17,6 +17,30 @@ namespace CapstoneProject.Data
                     GameID = 1,
                     GameListID = 1,
                     RawgID = 58175
+                },
+                new Game
+                {
+                    GameID = 2,
+                    GameListID = 1,
+                    RawgID = 494384
+                },
+                new Game
+                {
+                    GameID = 3,
+                    GameListID = 1,
+                    RawgID = 29179
+                },
+                new Game
+                {
+                    GameID = 4,
+                    GameListID = 1,
+                    RawgID = 39707
+                },
+                new Game
+                {
+                    GameID = 5,
+                    GameListID = 1,
+                    RawgID = 3265
                 }
             );
 
@@ -29,6 +53,21 @@ namespace CapstoneProject.Data
                 {
                     ID = 2,
                     Name = "Wish List"
+                },
+                new GameList
+                {
+                    ID = 3,
+                    Name = "List 1"
+                },
+                new GameList
+                {
+                    ID = 4,
+                    Name = "List 2"
+                },
+                new GameList
+                {
+                    ID = 5,
+                    Name = "List 3"
                 }
             );
         }
