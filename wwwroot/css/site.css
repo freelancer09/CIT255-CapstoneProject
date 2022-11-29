@@ -1,15 +1,19 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+nav {
+    background-color: #070607;
+}
+
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #FFA7DC !important;
 }
 
 .btn-primary {
@@ -59,8 +63,31 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url("../img/arcadeCarpet.png");
+    background-repeat: repeat;
+    color: #FFA7DC;
+}
+
+.btn {
+    background-color: white;
+    border: none;
+    color: #070607;
+}
+td {
+    color: #FFA7DC;
+}
+
+form, .plate {
+    background-color: #070607;
+    padding: 15px;
+    border: solid #C4EDFA 2px;
+}
+
+form > p {
+    text-align: right;
+    margin-left: auto;
 }
 .footer {
   position: absolute;
