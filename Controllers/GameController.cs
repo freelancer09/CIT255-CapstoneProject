@@ -20,10 +20,30 @@ namespace CapstoneProject.Controllers
         }
 
         // GET: Game
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, int filter = 0)
         {
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
             var gameContext = _context.Games.Include(g => g.GameList);
-            return View(await gameContext.ToListAsync());
+
+            if (filter != 0)
+            {
+                gameContext = gameContext.Where(g => g.GameList.ID == filter).Include(l => l.GameList);
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    gameContext = gameContext.OrderByDescending(g => g.GameList.Name).Include(l => l.GameList);
+                    break;
+                default:
+                    gameContext = gameContext.OrderBy(g => g.GameList.Name).Include(l => l.GameList);
+                    break;
+            }
+
+            ViewData["FilterList"] = new SelectList(_context.GameLists, "ID", "Name", filter);
+
+            return View(await gameContext.ToListAsync()); 
         }
 
         // GET: Game/Details/5

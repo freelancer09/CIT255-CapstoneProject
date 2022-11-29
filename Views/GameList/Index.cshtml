@@ -9,11 +9,20 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form class="form-inline" asp-action="Index" method="get">
+    <div class="form-group">
+        <label class="sr-only" for="filter">Game</label>
+        <input class="form-control" type="text" name="search" value="@ViewData["CurrentFilter"]" />
+    </div>
+    <input type="submit" value="Search" class="btn btn-primary" />
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Name)</a>
             </th>
             <th></th>
         </tr>

@@ -20,9 +20,29 @@ namespace CapstoneProject.Controllers
         }
 
         // GET: GameList
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string search)
         {
-            return View(await _context.GameLists.ToListAsync());
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["CurrentFilter"] = search;
+
+            var gameLists = from l in _context.GameLists select l;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                gameLists = gameLists.Where(l => l.Name.Contains(search));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    gameLists = gameLists.OrderByDescending(l => l.Name);
+                    break;
+                default:
+                    gameLists = gameLists.OrderBy(l => l.Name);
+                    break;
+            }
+
+            return View(await gameLists.ToListAsync());
         }
 
         // GET: GameList/Details/5
@@ -33,14 +53,14 @@ namespace CapstoneProject.Controllers
                 return NotFound();
             }
 
-            var gameList = await _context.GameLists
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var gameList = await _context.GameLists.FirstOrDefaultAsync(m => m.ID == id);
             if (gameList == null)
             {
                 return NotFound();
             }
-
-            return View(gameList);
+            var gameLists = await _context.Games.Where(g => g.GameListID == id).ToListAsync();
+            var gameListViewModel = new GameListViewModel<Game> { gameList = gameList, gameLists = gameLists };
+            return View(gameListViewModel);
         }
 
         // GET: GameList/Create
