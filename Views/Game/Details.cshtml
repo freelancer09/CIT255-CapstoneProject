@@ -4,11 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Game</h4>
-    <hr />
+<div class="plate">
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.RawgID)
@@ -23,8 +19,8 @@
             @Html.DisplayFor(model => model.GameList.Name)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.GameID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.GameID" class="btn btn-primary text-dark">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
 </div>
