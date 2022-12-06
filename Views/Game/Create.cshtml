@@ -4,32 +4,29 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div style="width:auto;margin-left:10%;margin-right:10%">
+    <h1>Create</h1>
 
-<h4>Game</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="GameListID" class="control-label"></label>
-                <select asp-for="GameListID" class ="form-control" asp-items="ViewBag.GameListID"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="RawgID" class="control-label"></label>
-                <input asp-for="RawgID" class="form-control" />
-                <span asp-validation-for="RawgID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+    <hr />
+    <form asp-action="Create">
+        <h4>Game</h4>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="GameListID" class="control-label"></label>
+            <select asp-for="GameListID" class ="form-control" asp-items="ViewBag.GameListID"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="RawgID" class="control-label"></label>
+            <input asp-for="RawgID" class="form-control" />
+            <span asp-validation-for="RawgID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
