@@ -10,7 +10,7 @@
     <div>Released: @Model.Released</div>
     <div>Metacritic: @Model.Metacritic</div>
     <div>ESRB Rating: @Model.esrb_rating.Name</div>
-    <div>Description: @Model.Description</div>
+    <div>Description: @Html.Raw(Model.Description)</div>
     <div>Platforms:
         <ul>
         @foreach (PlatformWrapper platform in Model.Platforms)

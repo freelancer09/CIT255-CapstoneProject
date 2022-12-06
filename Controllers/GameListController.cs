@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CapstoneProject.Data;
 using CapstoneProject.Models;
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace CapstoneProject.Controllers
 {
@@ -52,14 +53,23 @@ namespace CapstoneProject.Controllers
             {
                 return NotFound();
             }
-
             var gameList = await _context.GameLists.FirstOrDefaultAsync(m => m.ID == id);
             if (gameList == null)
             {
                 return NotFound();
             }
             var gameLists = await _context.Games.Where(g => g.GameListID == id).ToListAsync();
-            var gameListViewModel = new GameListViewModel<Game> { gameList = gameList, gameLists = gameLists };
+
+            List<GameResult> games = new List<GameResult>();
+            foreach (var i in gameLists)
+            {
+                RAWG rawg = new RAWG();
+                GameResult query = new GameResult();
+                query = rawg.GetGameData(i.RawgID.ToString());
+                games.Add(query);
+            }
+
+            var gameListViewModel = new GameListViewModel<Game> { gameList = gameList, gameLists = gameLists, gameResults = games };
             return View(gameListViewModel);
         }
 
