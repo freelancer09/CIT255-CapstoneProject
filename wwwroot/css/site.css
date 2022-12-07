@@ -11,6 +11,25 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+.sideleft {
+    width: auto;
+    display: inline-block;
+    z-index: 1;
+    color: #C4EDFA;
+    overflow-x: hidden;
+    padding: 20px;
+    flex: 1;
+}
+
+.sideright {
+    width: max-content;
+    display: inline-block;
+    z-index: 1;
+    color: #C4EDFA;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
 /* Provide sufficient contrast against white background */
 a {
     color: #FFA7DC !important;
