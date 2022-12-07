@@ -4,43 +4,54 @@
 }
 
 <div class="plate">
-    <h1>Name: @Model.Name</h1>
-    <div>Slug: @Model.Slug</div>
-    <div>ID: @Model.Id</div>
-    <div>Released: @Model.Released</div>
-    <div>Metacritic: @Model.Metacritic</div>
-    <div>ESRB Rating: @Model.esrb_rating.Name</div>
-    <div>Description: @Html.Raw(Model.Description)</div>
-    <div>Platforms:
-        <ul>
-        @foreach (PlatformWrapper platform in Model.Platforms)
-        {
-            <li>@platform.Platform.Name</li> 
-        }
-        </ul>
-    </div>
-    <div>Genres:
-        <ul>
-            @foreach (Genre genre in Model.Genres)
-            {
-                <li>@genre.Name</li> 
-            }
-        </ul>
-    </div>
-    <div>Developers:
-        <ul>
-            @foreach (Developer developer in Model.Developers)
-            {
-                <li>@developer.Name</li>
-            }
-        </ul>
-    </div>
-    <div>Publishers:
-        <ul>
-            @foreach (Publisher publisher in Model.Publishers)
-            {
-                <li>@publisher.Name</li>
-            }
-        </ul>
+    <div style="display:flex;">
+        <div class="sideleft">
+            <h1 style="color:#FFA7DC;">@Model.Name</h1>
+            <div>Metacritic: @Model.Metacritic</div>
+            <div>ESRB Rating: @Model.esrb_rating.Name</div>
+            <div>Released: @Model.Released</div>
+            <br /><br />
+            <div>Description: @Html.Raw(Model.Description)</div>
+        </div>
+        <div class="sideright">
+            <div>
+                Developers:
+                <ul style='list-style-type:"- "'>
+                    @foreach (Developer developer in Model.Developers)
+                    {
+                        <li>@developer.Name</li>
+                    }
+                </ul>
+            </div>
+            <div>
+                Publishers:
+                <ul style='list-style-type:"- "'>
+                    @foreach (Publisher publisher in Model.Publishers)
+                    {
+                        <li>@publisher.Name</li>
+                    }
+                </ul>
+            </div>
+            <div>
+                Platforms:
+                <ul style='list-style-type:"- "'>
+                    @foreach (PlatformWrapper platform in Model.Platforms)
+                    {
+                        <li>@platform.Platform.Name</li>
+                    }
+                </ul>
+            </div>
+            <div>
+                Genres:
+                <ul style='list-style-type:"- "'>
+                    @foreach (Genre genre in Model.Genres)
+                    {
+                        <li>@genre.Name</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <!--<div>Slug: @Model.Slug</div>-->
+        <!--<div>ID: @Model.Id</div>-->
     </div>
 </div>
