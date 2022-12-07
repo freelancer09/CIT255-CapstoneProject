@@ -5,30 +5,22 @@
 }
 
 <div class="plate">
-    <div style="display:flex;">
-        <div class="sideleft">
-        </div>
-        <div class="sideright">
-        </div>
-        <h4>Game</h4>
-        <hr />
-        <dl class="row">
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Released)
-            </dd>
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Developers)
-            </dd>
-        </dl>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RawgID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RawgID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GameList)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GameList.Name)
+        </dd>
+    </dl>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.GameID" class="btn btn-primary text-dark">Edit</a> |
+        <a asp-action="Index">Back to List</a>
     </div>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>

@@ -4,22 +4,22 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<form class="form-inline" asp-action="Index" method="get">
+<form class="form-inline plate" asp-action="Index" method="get">
     <div class="form-group">
         <label class="sr-only" for="filter">GameList</label>
         <select name="filter" class="form-control" asp-items="ViewBag.FilterList">
             <option selected></option>
         </select> 
     </div>
-    <input type="submit" value="Filter" class="btn btn-primary" />
 
+    <input type="submit" value="Filter" class="btn btn-primary" />
     <p>
         <a asp-action="Create">Create New</a>
     </p>
 </form>
-<br />
+
+<hr />
+
 <div class="plate">
     <table class="table">
         <thead>
@@ -34,21 +34,21 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model) {
-                    <tr>
-                        <td>
-                            <a asp-area="" asp-controller="game" asp-action="@item.RawgID">@Html.DisplayFor(modelItem => item.RawgID)</a>
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.GameList.Name)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.GameID">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.GameID">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.GameID">Delete</a>
-                        </td>
-                    </tr>
-            }
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    <a asp-area="" asp-controller="game" asp-action="@item.RawgID">@Html.DisplayFor(modelItem => item.RawgID)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameList.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.GameID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.GameID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.GameID">Delete</a>
+                </td>
+            </tr>
+    }
         </tbody>
     </table>
 </div>
