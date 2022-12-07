@@ -21,14 +21,14 @@
         </dt>
         <dd class="col-sm-10">
             <table class="table">
-            @foreach (Game game in Model.gameLists)
+            @for (int i = (Model.gameResults.Count() - 1); i > -1; i--)
             {
-                    <tr>
-                        <td><a asp-area="" asp-controller="game" asp-action="@game.RawgID">@game.RawgID</a></td>
-                        <td>
-                            <a asp-controller="game" asp-action="Delete" asp-route-id="@game.GameID">Delete</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td><a asp-area="" asp-controller="game" asp-action="@Model.gameResults[i].Id">@Model.gameResults[i].Name</a></td>
+                    <td>
+                        <a asp-controller="game" asp-action="Delete" asp-route-id="@Model.gameLists[i].GameID">Delete</a>
+                    </td>
+                </tr>
             }
             </table>
         </dd>

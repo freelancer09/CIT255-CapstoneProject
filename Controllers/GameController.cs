@@ -43,7 +43,20 @@ namespace CapstoneProject.Controllers
 
             ViewData["FilterList"] = new SelectList(_context.GameLists, "ID", "Name", filter);
 
-            return View(await gameContext.ToListAsync()); 
+            var gameLists = await gameContext.ToListAsync();
+
+            List<GameResult> games = new List<GameResult>();
+            foreach (var i in gameLists)
+            {
+                RAWG rawg = new RAWG();
+                GameResult query = new GameResult();
+                query = rawg.GetGameData(i.RawgID.ToString());
+                games.Add(query);
+            }
+
+            GameListViewModel<Game> gameListViewModel = new GameListViewModel<Game> { gameLists = gameLists, gameResults = games };
+
+            return View(gameListViewModel); 
         }
 
         // GET: Game/Details/5

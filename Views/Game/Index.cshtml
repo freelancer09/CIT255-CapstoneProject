@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CapstoneProject.Models.Game>
+﻿@model GameListViewModel<Game>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,19 +25,28 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.RawgID)
+                    RawgID
                 </th>
                 <th>
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.GameList)</a>
+                    Name
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">GameList</a>
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-    @foreach (var item in Model) {
+            @{
+                var i = 0;
+            }
+    @foreach (var item in Model.gameLists) {
             <tr>
                 <td>
                     <a asp-area="" asp-controller="game" asp-action="@item.RawgID">@Html.DisplayFor(modelItem => item.RawgID)</a>
+                </td>
+                <td>
+                    @Model.gameResults[i].Name
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.GameList.Name)
@@ -48,6 +57,8 @@
                     <a asp-action="Delete" asp-route-id="@item.GameID">Delete</a>
                 </td>
             </tr>
+                
+            i++;                
     }
         </tbody>
     </table>

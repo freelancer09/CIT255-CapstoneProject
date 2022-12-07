@@ -8,5 +8,7 @@ namespace CapstoneProject.Models
     {
         public GameList gameList { get; set; }
         public List<T> gameLists { get; set; }
+
+        public List<GameResult> gameResults { get; set; }
     }
 }
