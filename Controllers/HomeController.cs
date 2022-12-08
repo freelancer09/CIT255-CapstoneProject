@@ -1,5 +1,8 @@
-﻿using CapstoneProject.Models;
+﻿using CapstoneProject.Data;
+using CapstoneProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.Extensions.FileSystemGlobbing;
 using Microsoft.Extensions.Logging;
@@ -41,15 +44,6 @@ namespace CapstoneProject.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [Route("game/{slug}")]
-        public IActionResult GameDetail(string slug)
-        {
-            RAWG rawg = new RAWG();
-            GameResult query = new GameResult();
-            query = rawg.GetGameData(slug);
-            return View(query);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

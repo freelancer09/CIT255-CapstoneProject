@@ -13,14 +13,14 @@
 
 <hr />
 
-<div class="plate">
 @if (Model != null)
 {
+<div class="plate">
     <ul>
     @foreach (GameResult gameResult in Model.Results)
     {
         <li><a asp-area="" asp-controller="game" asp-action="@gameResult.Slug">@gameResult.Name</a></li>
     }
     </ul>
-}
 </div>
+}

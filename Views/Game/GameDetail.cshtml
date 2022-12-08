@@ -4,13 +4,22 @@
 }
 
 <div class="plate">
-    <div style="display:flex;">
+     <div style="display:flex;">
         <div class="sideleft">
             <h1 style="color:#FFA7DC;">@Model.Name</h1>
+            <br />
+            <form asp-action="Create" class="form-inline">
+                <div class="form-group">
+                    <input type="hidden" value="@Model.Id" name="RawgID" />
+                    <select class="form-control" name="GameListID" asp-items="ViewBag.GameListID"></select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add to List</button>
+            </form>
+            <br />
             <div>Metacritic: @Model.Metacritic</div>
             <div>ESRB Rating: @Model.esrb_rating.Name</div>
-            <div>Released: @Model.Released</div>
-            <br /><br />
+            <div>Released: @Model.Released.ToString("MMMM dd, yyyy")</div>
+            <br />
             <div>Description: @Html.Raw(Model.Description)</div>
         </div>
         <div class="sideright">

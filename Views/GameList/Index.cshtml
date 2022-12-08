@@ -4,9 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<form class="form-inline" asp-action="Index" method="get">
+<form class="form-inline plate" asp-action="Index" method="get">
     <div class="form-group">
         <label class="sr-only" for="filter">Game</label>
         <input class="form-control" type="text" name="search" value="@ViewData["CurrentFilter"]" />

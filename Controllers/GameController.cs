@@ -189,5 +189,17 @@ namespace CapstoneProject.Controllers
         {
             return _context.Games.Any(e => e.GameID == id);
         }
+
+        // GET: Game/GameDetail
+        [Route("game/{slug}")]
+        public IActionResult GameDetail(string slug)
+        {
+            RAWG rawg = new RAWG();
+            GameResult query = new GameResult();
+            query = rawg.GetGameData(slug);
+            ViewData["GameListID"] = new SelectList(_context.GameLists, "ID", "Name");
+
+            return View(query);
+        }
     }
 }
