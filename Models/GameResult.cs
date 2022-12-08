@@ -16,7 +16,7 @@ namespace CapstoneProject.Models
 
         public string Metacritic { get; set; }
 
-        public DateTime Released { get; set; }
+        public string Released { get; set; }
 
         public List<PlatformWrapper> Platforms { get; set; }
 
